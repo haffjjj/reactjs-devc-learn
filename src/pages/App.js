@@ -12,7 +12,6 @@ class App extends React.Component{
 
         this.state = {
             loading: true,
-            search: '',
             blogs: [],
             blogsFiltered: []
         }
@@ -24,7 +23,7 @@ class App extends React.Component{
 
     handleTypeSearch = event =>{
 
-        const blogsFiltered = this.state.blogsFiltered.filter(blog => {
+        const blogsFiltered = this.state.blogs.filter(blog => {
             return blog.title.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1
         })
 
@@ -56,6 +55,7 @@ class App extends React.Component{
         return(
             // <h1>loading : {JSON.stringify(this.state.loading)}</h1>
             <div style={styles.mainWrapper}>
+                <h1 style={styles.title}>React News</h1>
                 <SearchBar
                     search = {this.state.search}
                     onChangeSearch = {this.handleTypeSearch}
@@ -77,6 +77,9 @@ class App extends React.Component{
 const styles = {
     mainWrapper: {
         padding: 20
+    },
+    title:{
+        textAlign: 'center'
     }
 }
 
